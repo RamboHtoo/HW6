@@ -37,6 +37,16 @@ public:
         return ToInfixString(root);
     }
 
+    string ToPrefixString() const
+    {
+        return ToPrefixString(root);
+    }
+
+    string ToPostfixString() const
+    {
+        return ToPostfixString(root);
+    }
+
 
 private:
 
@@ -46,6 +56,8 @@ private:
 
 
     string ToInfixString(RBTNode* n) const;
+    string ToPrefixString(RBTNode* n) const;
+    string ToPostfixString(RBTNode* n) const;
 };
 
 #endif
