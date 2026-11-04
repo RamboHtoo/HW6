@@ -32,6 +32,10 @@ public:
 
     void Insert(int value);
 
+    bool Contains(int value) const;
+
+    unsigned long long int Size() const;
+
     string ToInfixString() const
     {
         return ToInfixString(root);
@@ -51,13 +55,18 @@ public:
 private:
 
     unsigned long long int numItems = 0;
-
     RBTNode* root = nullptr;
-
 
     string ToInfixString(RBTNode* n) const;
     string ToPrefixString(RBTNode* n) const;
     string ToPostfixString(RBTNode* n) const;
+
+    RBTNode* GetParent(RBTNode* child, RBTNode* current) const;
+
+    void RotateLeft(RBTNode* n);
+    void RotateRight(RBTNode* n);
+
+    void FixInsert(RBTNode* n);
 };
 
 #endif
