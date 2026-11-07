@@ -192,6 +192,45 @@ void TestInsertRandomTests(){
 	cout << "PASSED!" << endl << endl;
 }
 
+void TestGetMinimumMaximum()
+{
+    cout << "Testing Get Minimum and Get Maximum..." << endl;
+
+    RedBlackTree rbt;
+
+    rbt.Insert(30);
+    rbt.Insert(15);
+    rbt.Insert(45);
+    rbt.Insert(10);
+    rbt.Insert(25);
+    rbt.Insert(50);
+
+    assert(rbt.GetMin() == 10);
+    assert(rbt.GetMax() == 50);
+
+	RedBlackTree empty;
+
+	try
+	{
+		empty.GetMin();
+		assert(false);
+	}
+	catch(const invalid_argument& e)
+	{
+	}
+
+	try
+	{
+		empty.GetMax();
+		assert(false);
+	}
+	catch(const invalid_argument& e)
+	{
+	}
+
+    cout << "PASSED!" << endl << endl;
+}
+
 void TestCopyConstructor(){
 	cout << "Testing Copy Constructor..." << endl;
 
@@ -249,13 +288,7 @@ void TestContains(){
 
 
 
-void TestGetMinimumMaximum(){
-	cout << "Testing Get Minimum and Get Maximum..." << endl;
 
-	cout << "TESTS MISSING" << endl << endl;
-
-	cout << "PASSED!" << endl << endl;
-}
 
 
 

@@ -438,3 +438,39 @@ void RedBlackTree::FixInsert(RBTNode* n)
     // The root must always be black.
     root->color = COLOR_BLACK;
 }
+
+int RedBlackTree::GetMin() const
+{
+    if(root == nullptr)
+    {
+        throw invalid_argument("Tree is empty.");
+    }
+
+    RBTNode* current = root;
+
+    // The smallest BST value is the farthest-left node.
+    while(current->left != nullptr)
+    {
+        current = current->left;
+    }
+
+    return current->data;
+}
+
+int RedBlackTree::GetMax() const
+{
+    if(root == nullptr)
+    {
+        throw invalid_argument("Tree is empty.");
+    }
+
+    RBTNode* current = root;
+
+    // The largest BST value is the farthest-right node.
+    while(current->right != nullptr)
+    {
+        current = current->right;
+    }
+
+    return current->data;
+}

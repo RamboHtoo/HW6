@@ -1,4 +1,4 @@
-all: first-step
+all: first-step rbt-tests
 
 first-step:
 	g++ -Wall -g RedBlackTree.cpp RedBlackTreeTestsFirstStep.cpp -o first-step

@@ -11,7 +11,7 @@ using namespace std;
 #define COLOR_BLACK 1
 
 
-// RBTNode structure from the lecture.
+// RBTNode structure 
 struct RBTNode
 {
     int data;
@@ -34,6 +34,9 @@ public:
 
     bool Contains(int value) const;
 
+    int GetMin() const;
+    int GetMax() const;
+
     unsigned long long int Size() const;
 
     string ToInfixString() const
@@ -50,7 +53,6 @@ public:
     {
         return ToPostfixString(root);
     }
-
 
 private:
 
