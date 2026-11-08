@@ -474,3 +474,28 @@ int RedBlackTree::GetMax() const
 
     return current->data;
 }
+
+RBTNode* RedBlackTree::CopyTree(RBTNode* n) const
+{
+    if(n == nullptr)
+    {
+        return nullptr;
+    }
+
+    RBTNode* copy = new RBTNode;
+
+    copy->data = n->data;
+    copy->color = n->color;
+
+    copy->left = CopyTree(n->left);
+    copy->right = CopyTree(n->right);
+
+    return copy;
+}
+
+RedBlackTree::RedBlackTree(const RedBlackTree& other)
+{
+    numItems = other.numItems;
+
+    root = CopyTree(other.root);
+}

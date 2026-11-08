@@ -30,6 +30,8 @@ public:
 
     RedBlackTree(int value);
 
+    RedBlackTree(const RedBlackTree& other);
+
     void Insert(int value);
 
     bool Contains(int value) const;
@@ -58,6 +60,7 @@ private:
 
     unsigned long long int numItems = 0;
     RBTNode* root = nullptr;
+    RBTNode* CopyTree(RBTNode* n) const;
 
     string ToInfixString(RBTNode* n) const;
     string ToPrefixString(RBTNode* n) const;
