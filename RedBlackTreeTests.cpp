@@ -100,16 +100,25 @@ void TestInsertThirdNode(){
 
 	delete rbt;
 	
-	cout << "TESTS MISSING" << endl << endl;
 	cout << "PASSED!" << endl << endl;
 }
 
-void TestInsertFourthNode(){
-	cout << "Testing Insert Fourth Node..." << endl;
+void TestInsertFourthNode()
+{
+    cout << "Testing Insert Fourth Node..." << endl;
 
-	cout << "TESTS MISSING" << endl << endl;
-	
-	cout << "PASSED!" << endl << endl;
+    RedBlackTree rbt;
+
+    rbt.Insert(30);
+    rbt.Insert(15);
+    rbt.Insert(45);
+    rbt.Insert(10);
+
+    // Parent and uncle are both red, so recoloring is required.
+    assert(rbt.ToPrefixString() ==
+           " B30  B15  R10  B45 ");
+
+    cout << "PASSED!" << endl << endl;
 }
 
 void TestInsertFifthNode(){
@@ -123,8 +132,6 @@ void TestInsertFifthNode(){
 	//cout << "result: "  << rbt->ToPrefixString() << endl;
 	assert(rbt->ToPrefixString() == " B30  B15  R10  R25  B45 ");
 	delete rbt;
-	
-	cout << "TESTS MISSING" << endl << endl;
 	
 	cout << "PASSED!" << endl << endl;
 }
@@ -281,17 +288,76 @@ void TestContains(){
 	delete rbt;
 
 	
-	cout << "TESTS MISSING" << endl << endl;
 	cout << "PASSED!" << endl << endl;
 }
 
 
 
+void TestDuplicate()
+{
+    cout << "Testing duplicate insertion..." << endl;
 
+    RedBlackTree rbt;
 
+    rbt.Insert(20);
+    rbt.Insert(10);
+    rbt.Insert(30);
 
+    try
+    {
+        rbt.Insert(20);
+        assert(false);
+    }
+    catch(const invalid_argument& e)
+    {
+    }
 
+    assert(rbt.Size() == 3);
 
+    cout << "PASSED!" << endl << endl;
+}
+
+void TestMoreContains()
+{
+    cout << "Testing additional Contains cases..." << endl;
+
+    RedBlackTree rbt;
+
+    rbt.Insert(40);
+    rbt.Insert(20);
+    rbt.Insert(60);
+    rbt.Insert(10);
+    rbt.Insert(30);
+
+    assert(rbt.Contains(40));
+    assert(rbt.Contains(10));
+    assert(rbt.Contains(60));
+
+    assert(!rbt.Contains(99));
+    assert(!rbt.Contains(25));
+
+    cout << "PASSED!" << endl << endl;
+}
+
+void TestSize()
+{
+    cout << "Testing Size..." << endl;
+
+    RedBlackTree rbt;
+
+    assert(rbt.Size() == 0);
+
+    rbt.Insert(10);
+    assert(rbt.Size() == 1);
+
+    rbt.Insert(5);
+    assert(rbt.Size() == 2);
+
+    rbt.Insert(15);
+    assert(rbt.Size() == 3);
+
+    cout << "PASSED!" << endl << endl;
+}
 
 
 int main(){
@@ -313,6 +379,10 @@ int main(){
 
 	TestContains();
 	TestGetMinimumMaximum();
+
+	TestDuplicate();
+	TestMoreContains();
+	TestSize();
 
 	
 	cout << "ALL TESTS PASSED!!" << endl;
