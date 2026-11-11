@@ -499,3 +499,24 @@ RedBlackTree::RedBlackTree(const RedBlackTree& other)
 
     root = CopyTree(other.root);
 }
+
+void RedBlackTree::DeleteTree(RBTNode* n)
+{
+    if(n == nullptr)
+    {
+        return;
+    }
+
+    DeleteTree(n->left);
+    DeleteTree(n->right);
+
+    delete n;
+}
+
+RedBlackTree::~RedBlackTree()
+{
+    DeleteTree(root);
+
+    root = nullptr;
+    numItems = 0;
+}

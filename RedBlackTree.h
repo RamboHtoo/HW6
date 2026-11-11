@@ -56,6 +56,9 @@ public:
         return ToPostfixString(root);
     }
 
+    void Remove(int data);
+    ~RedBlackTree();
+
 private:
 
     unsigned long long int numItems = 0;
@@ -72,6 +75,7 @@ private:
     void RotateRight(RBTNode* n);
 
     void FixInsert(RBTNode* n);
+    void DeleteTree(RBTNode* n);
 };
 
 #endif
